@@ -1,12 +1,23 @@
 import os
 import random
 import time
+
+#pyga.me
+
 os.system("cls")
 
 vida_usuario = 100
 vida_computador = 100
 
-print("Seja Bem vindo a batalha pokémon!")
+print(""" 
+
+██████╗░░█████╗░████████╗░█████╗░██╗░░░░░██╗░░██╗░█████╗░  ██████╗░░█████╗░██╗░░██╗███████╗███╗░░░███╗░█████╗░███╗░░██╗
+██╔══██╗██╔══██╗╚══██╔══╝██╔══██╗██║░░░░░██║░░██║██╔══██╗  ██╔══██╗██╔══██╗██║░██╔╝██╔════╝████╗░████║██╔══██╗████╗░██║
+██████╦╝███████║░░░██║░░░███████║██║░░░░░███████║███████║  ██████╔╝██║░░██║█████═╝░█████╗░░██╔████╔██║██║░░██║██╔██╗██║
+██╔══██╗██╔══██║░░░██║░░░██╔══██║██║░░░░░██╔══██║██╔══██║  ██╔═══╝░██║░░██║██╔═██╗░██╔══╝░░██║╚██╔╝██║██║░░██║██║╚████║
+██████╦╝██║░░██║░░░██║░░░██║░░██║███████╗██║░░██║██║░░██║  ██║░░░░░╚█████╔╝██║░╚██╗███████╗██║░╚═╝░██║╚█████╔╝██║░╚███║
+╚═════╝░╚═╝░░╚═╝░░░╚═╝░░░╚═╝░░╚═╝╚══════╝╚═╝░░╚═╝╚═╝░░╚═╝  ╚═╝░░░░░░╚════╝░╚═╝░░╚═╝╚══════╝╚═╝░░░░░╚═╝░╚════╝░╚═╝░░╚══╝
+""")
 
 print("=== Escolha seu Pokémon de batalha ===")
 
@@ -45,44 +56,67 @@ elif(computador == 3):
 
 input("pressione <Enter> para iniciar a batalha")
 
-print("== Menu de batalha ==")
+while vida_usuario > 0 or vida_computador >0:
+    os.system("cls")
 
-print("[1] - Atacar")
-print("[2] - Usar poção de cura")
-print("[3] - Fugir")
+    print(f"vida do Usuário:{vida_usuario}")
+    print(f"vida do Computador:{vida_computador}")
 
-op_usuario = int(input("Escolha uma opção:"))
 
-if( op_usuario == 1):
-    print("Você atacou!")
-    vida_computador -= 10
+    print("== Menu de batalha ==")
 
-elif(op_usuario == 2):
-    print(" Você usou cura")
-    vida_usuario += 5
+    print("[1] - Atacar")
+    print("[2] - Usar poção de cura")
+    print("[3] - Fugir")
 
-elif(op_usuario == 3):
-    print("você saiu da batalha")
+    op_usuario = int(input("Escolha uma opção:"))
 
-time.sleep(3)
+    if( op_usuario == 1):
+        print("Você atacou!")
+        vida_computador -= 10
 
-os.system("cls")
+    elif(op_usuario == 2):
+        print(" Você usou cura")
+        vida_usuario += 5
 
-print("Aguarde o Computador")
+    elif(op_usuario == 3):
+        print("você saiu da batalha")
+        vida_usuario = 0
+        time.sleep(2)
+        break
+        
+    time.sleep(3)
 
-time.sleep(3)
+    os.system("cls")
 
-op_computador = random.randint(1,3)
+    print("Aguarde o Computador")
 
-# verificar a opção escolhida do computador
+    time.sleep(3)
 
-if(op_computador == 1):
-    print(" o Computador atacou!")
-    vida_usuario -=10
+    op_computador = random.randint(1,3)
 
-elif(op_computador == 2):
-    print("o Computador se curou ")
-    vida_computador +=5
+    # verificar a opção escolhida do computador
 
-elif(op_computador == 3):
-    print(" o Computador Saiu da batalha")
+    if(op_computador == 1):
+        print(" o Computador atacou!")
+        vida_usuario -=10
+
+    elif(op_computador == 2):
+        print("o Computador se curou ")
+        vida_computador +=5
+
+    elif(op_computador == 3):
+        print(" o Computador Saiu da batalha")
+        vida_computador = 0
+        time.sleep(2)
+        break
+    time.sleep(3)
+    
+#verificar que foi o ganhador
+
+if vida_usuario > vida_computador:
+    print("Parabéns você ganhou!")
+else:
+    print("Gamer Over! o computador venceu!")
+
+print("jogo finalizado")
